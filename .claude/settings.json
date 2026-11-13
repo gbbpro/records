@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/after-edit.mjs\"",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./.env.production)",
+      "Bash(git push origin main:*)",
+      "Bash(git push --force:*)"
+    ]
+  }
+}
